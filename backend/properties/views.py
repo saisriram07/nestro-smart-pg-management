@@ -1,6 +1,10 @@
 from rest_framework import generics
-from .models import Property, Building
-from .serializers import PropertySerializer, BuildingSerializer
+from .models import Property, Building, Room
+from .serializers import (
+    PropertySerializer,
+    BuildingSerializer,
+    RoomSerializer,
+)
 
 
 class PropertyListCreateView(generics.ListCreateAPIView):
@@ -21,3 +25,13 @@ class BuildingListCreateView(generics.ListCreateAPIView):
 class BuildingDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Building.objects.all()
     serializer_class = BuildingSerializer
+
+
+class RoomListCreateView(generics.ListCreateAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
+
+
+class RoomDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Room.objects.all()
+    serializer_class = RoomSerializer
