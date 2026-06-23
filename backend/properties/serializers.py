@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Property, Building, Room
+from .models import Property, Building, Room, Bed
 
 
 class PropertySerializer(serializers.ModelSerializer):
@@ -17,4 +17,10 @@ class BuildingSerializer(serializers.ModelSerializer):
 class RoomSerializer(serializers.ModelSerializer):
     class Meta:
         model = Room
+        fields = "__all__"
+
+
+class BedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Bed
         fields = "__all__"

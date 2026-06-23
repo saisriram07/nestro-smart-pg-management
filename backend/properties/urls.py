@@ -6,9 +6,12 @@ from .views import (
     BuildingDetailView,
     RoomListCreateView,
     RoomDetailView,
+    BedListCreateView,
+    BedDetailView,
 )
 
 urlpatterns = [
+
     path("properties/", PropertyListCreateView.as_view()),
     path("properties/<int:pk>/", PropertyDetailView.as_view()),
 
@@ -17,4 +20,7 @@ urlpatterns = [
 
     path("rooms/", RoomListCreateView.as_view()),
     path("rooms/<int:pk>/", RoomDetailView.as_view()),
+
+    path("beds/", BedListCreateView.as_view()),
+    path("beds/<int:pk>/", BedDetailView.as_view()),
 ]
