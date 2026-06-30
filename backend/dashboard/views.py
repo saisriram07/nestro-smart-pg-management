@@ -2,6 +2,8 @@ from django.db.models import Sum
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from properties.models import (
     Property,
@@ -11,11 +13,13 @@ from properties.models import (
 )
 
 from tenants.models import Tenant
-
 from payments.models import Payment
 
 
 class DashboardAPIView(APIView):
+
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
 
@@ -46,14 +50,15 @@ class DashboardAPIView(APIView):
             payment_status="Pending"
         ).count()
 
-        total_revenue = Payment.objects.filter(
-            payment_status="Paid"
-        ).aggregate(
-            total=Sum("amount")
-        )["total"] or 0
+        total_revenue = (
+            Payment.objects.filter(
+                payment_status="Paid"
+            ).aggregate(
+                total=Sum("amount")
+            )["total"] or 0
+        )
 
         return Response({
-
             # Property Analytics
             "total_properties": total_properties,
             "total_buildings": total_buildings,
@@ -68,5 +73,4 @@ class DashboardAPIView(APIView):
             "paid_payments": paid_payments,
             "pending_payments": pending_payments,
             "total_revenue": total_revenue,
-
         })
