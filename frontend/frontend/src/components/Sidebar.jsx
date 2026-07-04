@@ -1,16 +1,13 @@
+import { Link } from "react-router-dom";
+
 function Sidebar() {
-
     return (
-
         <div
             className="bg-dark text-white p-3"
             style={{ minHeight: "100vh" }}
         >
-
             <h4 className="mb-4">
-
                 Dashboard
-
             </h4>
 
             <hr />
@@ -18,39 +15,56 @@ function Sidebar() {
             <ul className="nav flex-column">
 
                 <li className="nav-item mb-3">
-                    🏠 Dashboard
+                    <Link
+                        to="/dashboard"
+                        className="nav-link text-white"
+                    >
+                        🏠 Dashboard
+                    </Link>
                 </li>
 
                 <li className="nav-item mb-3">
-                    🏢 Properties
+                    <Link
+                        to="/properties"
+                        className="nav-link text-white"
+                    >
+                        🏢 Properties
+                    </Link>
                 </li>
 
                 <li className="nav-item mb-3">
-                    🏗 Buildings
+                    <span className="nav-link text-secondary">
+                        🏗 Buildings
+                    </span>
                 </li>
 
                 <li className="nav-item mb-3">
-                    🚪 Rooms
+                    <span className="nav-link text-secondary">
+                        🚪 Rooms
+                    </span>
                 </li>
 
                 <li className="nav-item mb-3">
-                    🛏 Beds
+                    <span className="nav-link text-secondary">
+                        🛏 Beds
+                    </span>
                 </li>
 
                 <li className="nav-item mb-3">
-                    👤 Tenants
+                    <span className="nav-link text-secondary">
+                        👤 Tenants
+                    </span>
                 </li>
 
                 <li className="nav-item mb-3">
-                    💰 Payments
+                    <span className="nav-link text-secondary">
+                        💰 Payments
+                    </span>
                 </li>
 
             </ul>
-
         </div>
-
     );
-
 }
 
 export default Sidebar;

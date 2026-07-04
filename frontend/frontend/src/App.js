@@ -2,14 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import Properties from "./pages/Properties";
+
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
-
     return (
-
         <BrowserRouter>
-
             <Routes>
 
                 <Route
@@ -26,12 +25,18 @@ function App() {
                     }
                 />
 
+                <Route
+                    path="/properties"
+                    element={
+                        <ProtectedRoute>
+                            <Properties />
+                        </ProtectedRoute>
+                    }
+                />
+
             </Routes>
-
         </BrowserRouter>
-
     );
-
 }
 
 export default App;
