@@ -1,11 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Sidebar() {
+
+    const location = useLocation();
+
     return (
+
         <div
             className="bg-dark text-white p-3"
             style={{ minHeight: "100vh" }}
         >
+
             <h4 className="mb-4">
                 Dashboard
             </h4>
@@ -14,57 +19,75 @@ function Sidebar() {
 
             <ul className="nav flex-column">
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <Link
                         to="/dashboard"
-                        className="nav-link text-white"
+                        className={`nav-link ${
+                            location.pathname === "/dashboard"
+                                ? "text-warning fw-bold"
+                                : "text-white"
+                        }`}
                     >
                         🏠 Dashboard
                     </Link>
                 </li>
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <Link
                         to="/properties"
-                        className="nav-link text-white"
+                        className={`nav-link ${
+                            location.pathname === "/properties"
+                                ? "text-warning fw-bold"
+                                : "text-white"
+                        }`}
                     >
                         🏢 Properties
                     </Link>
                 </li>
 
-                <li className="nav-item mb-3">
-                    <span className="nav-link text-secondary">
+                <li className="nav-item mb-2">
+                    <Link
+                        to="/buildings"
+                        className={`nav-link ${
+                            location.pathname === "/buildings"
+                                ? "text-warning fw-bold"
+                                : "text-white"
+                        }`}
+                    >
                         🏗 Buildings
-                    </span>
+                    </Link>
                 </li>
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <span className="nav-link text-secondary">
                         🚪 Rooms
                     </span>
                 </li>
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <span className="nav-link text-secondary">
                         🛏 Beds
                     </span>
                 </li>
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <span className="nav-link text-secondary">
                         👤 Tenants
                     </span>
                 </li>
 
-                <li className="nav-item mb-3">
+                <li className="nav-item mb-2">
                     <span className="nav-link text-secondary">
                         💰 Payments
                     </span>
                 </li>
 
             </ul>
+
         </div>
+
     );
+
 }
 
 export default Sidebar;
