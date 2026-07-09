@@ -4,12 +4,16 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Properties from "./pages/Properties";
 import Buildings from "./pages/Buildings";
+import Rooms from "./pages/Rooms";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
+
     return (
+
         <BrowserRouter>
+
             <Routes>
 
                 <Route
@@ -44,9 +48,21 @@ function App() {
                     }
                 />
 
+                <Route
+                    path="/rooms"
+                    element={
+                        <ProtectedRoute>
+                            <Rooms />
+                        </ProtectedRoute>
+                    }
+                />
+
             </Routes>
+
         </BrowserRouter>
+
     );
+
 }
 
 export default App;

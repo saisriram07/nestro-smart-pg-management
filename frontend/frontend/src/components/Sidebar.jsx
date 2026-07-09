@@ -59,9 +59,16 @@ function Sidebar() {
                 </li>
 
                 <li className="nav-item mb-2">
-                    <span className="nav-link text-secondary">
+                    <Link
+                        to="/rooms"
+                        className={`nav-link ${
+                            location.pathname === "/rooms"
+                                ? "text-warning fw-bold"
+                                : "text-white"
+                        }`}
+                    >
                         🚪 Rooms
-                    </span>
+                    </Link>
                 </li>
 
                 <li className="nav-item mb-2">
