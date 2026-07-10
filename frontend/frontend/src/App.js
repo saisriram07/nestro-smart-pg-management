@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 import Properties from "./pages/Properties";
 import Buildings from "./pages/Buildings";
 import Rooms from "./pages/Rooms";
+import Beds from "./pages/Beds";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -53,6 +54,15 @@ function App() {
                     element={
                         <ProtectedRoute>
                             <Rooms />
+                        </ProtectedRoute>
+                    }
+                />
+
+                <Route
+                    path="/beds"
+                    element={
+                        <ProtectedRoute>
+                            <Beds />
                         </ProtectedRoute>
                     }
                 />
