@@ -9,18 +9,53 @@ class PropertySerializer(serializers.ModelSerializer):
 
 
 class BuildingSerializer(serializers.ModelSerializer):
+
+    property_name = serializers.CharField(
+        source="property.property_name",
+        read_only=True
+    )
+
     class Meta:
         model = Building
-        fields = "__all__"
+        fields = [
+            "id",
+            "property",
+            "property_name",
+            "building_name",
+        ]
 
 
 class RoomSerializer(serializers.ModelSerializer):
+
+    building_name = serializers.CharField(
+        source="building.building_name",
+        read_only=True
+    )
+
     class Meta:
         model = Room
-        fields = "__all__"
+        fields = [
+            "id",
+            "building",
+            "building_name",
+            "room_number",
+            "capacity",
+        ]
 
 
 class BedSerializer(serializers.ModelSerializer):
+
+    room_name = serializers.CharField(
+        source="room.room_number",
+        read_only=True
+    )
+
     class Meta:
         model = Bed
-        fields = "__all__"
+        fields = [
+            "id",
+            "room",
+            "room_name",
+            "bed_number",
+            "is_occupied",
+        ]

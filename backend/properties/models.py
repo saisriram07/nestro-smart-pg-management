@@ -1,4 +1,6 @@
 from django.db import models
+
+
 class Property(models.Model):
     property_name = models.CharField(max_length=100)
     address = models.TextField()
@@ -6,7 +8,8 @@ class Property(models.Model):
 
     def __str__(self):
         return self.property_name
-    
+
+
 class Building(models.Model):
     property = models.ForeignKey(
         Property,
@@ -17,7 +20,8 @@ class Building(models.Model):
 
     def __str__(self):
         return self.building_name
-    
+
+
 class Room(models.Model):
     building = models.ForeignKey(
         Building,
@@ -29,7 +33,8 @@ class Room(models.Model):
 
     def __str__(self):
         return self.room_number
-    
+
+
 class Bed(models.Model):
     room = models.ForeignKey(
         Room,
